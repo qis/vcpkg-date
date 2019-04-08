@@ -1,0 +1,66 @@
+diff --git a/include/date/date.h b/include/date/date.h
+index 280a598..f9b5a35 100644
+--- a/include/date/date.h
++++ b/include/date/date.h
+@@ -31,11 +31,7 @@
+ // We did not mean to shout.
+ 
+ #ifndef HAS_STRING_VIEW
+-#  if __cplusplus >= 201703
+ #    define HAS_STRING_VIEW 1
+-#  else
+-#    define HAS_STRING_VIEW 0
+-#  endif
+ #endif  // HAS_STRING_VIEW
+ 
+ #include <cassert>
+diff --git a/include/date/tz.h b/include/date/tz.h
+index 280a598..f9b5a35 100644
+--- a/include/date/tz.h
++++ b/include/date/tz.h
+@@ -1963,7 +1963,7 @@ from_stream(std::basic_istream<CharT, Traits>& is, const CharT* fmt,
+         bool is_60_sec = fds.tod.seconds() == seconds{60};
+         if (is_60_sec)
+             fds.tod.seconds() -= seconds{1};
+-        auto tmp = to_utc_time(sys_days(fds.ymd) - *offptr + fds.tod.to_duration());
++        auto tmp = utc_clock::from_sys(sys_days(fds.ymd) - *offptr + fds.tod.to_duration());
+         if (is_60_sec)
+             tmp += seconds{1};
+         if (is_60_sec != is_leap_second(tmp).first || !fds.tod.in_conventional_range())
+@@ -2197,7 +2197,7 @@ from_stream(std::basic_istream<CharT, Traits>& is, const CharT* fmt,
+     return is;
+ }
+ 
+-#if !defined(_MSC_VER) || _MSC_VER > 1912
++#if !defined(_MSC_VER) || _MSC_VER > 1913
+ 
+ // clock_time_conversion
+ 
+@@ -2471,7 +2471,7 @@ clock_cast(const std::chrono::time_point<SrcClock, Duration>& tp)
+     return clock_cast_detail::cc_impl<DstClock>(tp, &tp);
+ }
+ 
+-#endif  // !defined(_MSC_VER) || _MSC_VER > 1912
++#endif  // !defined(_MSC_VER) || _MSC_VER > 1913
+ 
+ // Deprecated API
+ 
+@@ -2579,3 +2579,4 @@ to_gps_time(const tai_time<Duration>& t)
+ }  // namespace date
+ 
+ #endif  // TZ_H
++
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 280a598..f9b5a35 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -1,7 +1,7 @@
+-cmake_minimum_required(VERSION 3.5.1)
++cmake_minimum_required(VERSION 3.12.0)
+ project(tz CXX)
+ 
+-set(CMAKE_CXX_STANDARD 11)
++set(CMAKE_CXX_STANDARD 20)
+ if(MSVC)
+   add_compile_options(/W3 /wd4005 /wd4996 /wd4018 -D_CRT_SECURE_NO_WARNINGS)
+ endif()
