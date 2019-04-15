@@ -1,28 +1,17 @@
-diff --git a/include/date/date.h b/include/date/date.h
---- a/include/date/date.h
-+++ b/include/date/date.h
-@@ -31,11 +31,7 @@
+diff --git i/include/date/date.h w/include/date/date.h
+index 79ab0da..64be58f 100644
+--- i/include/date/date.h
++++ w/include/date/date.h
+@@ -32,11 +32,7 @@
  // We did not mean to shout.
  
  #ifndef HAS_STRING_VIEW
 -#  if __cplusplus >= 201703
- #    define HAS_STRING_VIEW 1
+-#    define HAS_STRING_VIEW 1
 -#  else
 -#    define HAS_STRING_VIEW 0
 -#  endif
++#  define HAS_STRING_VIEW 1
  #endif  // HAS_STRING_VIEW
  
  #include <cassert>
-diff --git a/CMakeLists.txt b/CMakeLists.txt
---- a/CMakeLists.txt
-+++ b/CMakeLists.txt
-@@ -1,7 +1,7 @@
--cmake_minimum_required(VERSION 3.5.1)
-+cmake_minimum_required(VERSION 3.12.0)
- project(tz CXX)
- 
--set(CMAKE_CXX_STANDARD 11)
-+set(CMAKE_CXX_STANDARD 20)
- if(MSVC)
-   add_compile_options(/W3 /wd4005 /wd4996 /wd4018 -D_CRT_SECURE_NO_WARNINGS)
- endif()
