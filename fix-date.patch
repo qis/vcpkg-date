@@ -1,5 +1,4 @@
 diff --git a/include/date/date.h b/include/date/date.h
-index 280a598..f9b5a35 100644
 --- a/include/date/date.h
 +++ b/include/date/date.h
 @@ -31,11 +31,7 @@
@@ -15,7 +14,6 @@ index 280a598..f9b5a35 100644
  
  #include <cassert>
 diff --git a/CMakeLists.txt b/CMakeLists.txt
-index 280a598..f9b5a35 100644
 --- a/CMakeLists.txt
 +++ b/CMakeLists.txt
 @@ -1,7 +1,7 @@
