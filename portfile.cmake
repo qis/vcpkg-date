@@ -13,10 +13,6 @@ vcpkg_from_github(
   REF 9dc96fd9b5e4e1e7885aa80dc24a3ceb407c3730
   SHA512 1acb78f1ae7f5b1278a9e034fa5ccbb64643ad381ef9bd76bf42fb04d714c6742f2129b6892024cd98bb925e1a6136337fccb636e3f991b428be1ed05ab8901e
   HEAD_REF master
-)
-
-vcpkg_apply_patches(
-  SOURCE_PATH ${SOURCE_PATH}
   PATCHES ${CMAKE_CURRENT_LIST_DIR}/fix-date.patch
 )
 
