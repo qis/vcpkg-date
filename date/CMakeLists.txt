@@ -12,6 +12,7 @@ add_definitions(-DNOMINMAX -DHAS_REMOTE_API=${HAS_REMOTE_API})
 
 add_library(date INTERFACE)
 target_include_directories(date INTERFACE $<INSTALL_INTERFACE:include>)
+target_compile_definitions(date INTERFACE -DHAS_UNCAUGHT_EXCEPTIONS=1 -DHAS_VOID_T=1)
 
 add_library(tz src/tz.cpp)
 target_include_directories(tz PUBLIC $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include> $<INSTALL_INTERFACE:include>)
